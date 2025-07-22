@@ -1,6 +1,6 @@
 export default function ContactSection() {
   return (
-    <section className="bg-[#1c1c1c] min-h-screen flex items-center pl-56 py-24 relative overflow-hidden">
+    <section className="bg-[#1A1A1A] min-h-screen flex items-center pl-56 py-24 relative overflow-hidden">
       
         {/* Top Line - positioned at the very top of the section */}
       <div className="absolute top-1 left-1/2 transform -translate-x-1/2 w-px h-24 bg-white hidden md:block mt-16"></div>

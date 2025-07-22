@@ -26,7 +26,7 @@ const CareersSection = () => {
       {/* Background Text: Made fainter and removed 3D transform for a flatter look */}
       <div className="absolute inset-0 flex top-12 justify-center pointer-events-none">
         <div
-          className="text-[28vw] md:text-[20vw] font-bold text-gray-100 select-none whitespace-nowrap"
+          className="text-[28vw] md:text-[20vw] font-bold text-gray-100/100 select-none whitespace-nowrap"
           style={{
             letterSpacing: "0.1em",
           }}
