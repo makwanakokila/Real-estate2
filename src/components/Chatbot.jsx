@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   MessageSquare,
   X,
@@ -67,14 +68,12 @@ const Chatbot = () => {
       addMessage(
         <>
           You selected <strong>{service}</strong>. Visit our service page here:{" "}
-          <a
-            href="https://sensational-sorbet-d96d32.netlify.app/projects/services"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline text-white hover:text-gray-300"
+          <Link
+            to="/projects/services"
+            className="underline text-blue-600 hover:text-blue-800"
           >
             View Services
-          </a>
+          </Link>
         </>,
         "bot"
       );
@@ -84,22 +83,20 @@ const Chatbot = () => {
       addMessage("Are you interested in Commercial, Residential, or Plotting properties?", "bot", propertyOptions);
     },
     handlePropertyType: (type) => {
-      let url = "https://sensational-sorbet-d96d32.netlify.app/projects/services";
-      if (type === "Commercial") url = "https://sensational-sorbet-d96d32.netlify.app/projects/commercial";
-      else if (type === "Residential") url = "https://sensational-sorbet-d96d32.netlify.app/projects/residential";
-      else if (type === "Plotting") url = "https://sensational-sorbet-d96d32.netlify.app/projects/PlottingPage";
+      let url = "/projects/services";
+      if (type === "Commercial") url = "/projects/commercial";
+      else if (type === "Residential") url = "/projects/residential";
+      else if (type === "Plotting") url = "/projects/PlottingPage";
 
       addMessage(
         <>
           You selected <strong>{type}</strong> property. Learn more here:{" "}
-          <a
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline text-white hover:text-gray-300"
+          <Link
+            to={url}
+            className="underline text-blue-600 hover:text-blue-800"
           >
-            View {type} Services
-          </a>
+            View {type} Properties
+          </Link>
         </>,
         "bot"
       );
@@ -109,14 +106,12 @@ const Chatbot = () => {
       addMessage(
         <>
           You selected <strong>Contact</strong>. Reach out to us here:{" "}
-          <a
-            href="https://sensational-sorbet-d96d32.netlify.app/contact"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline text-white hover:text-gray-300"
+          <Link
+            to="/contact"
+            className="underline text-blue-600 hover:text-blue-800"
           >
             Contact Page
-          </a>
+          </Link>
         </>,
         "bot"
       );
@@ -147,20 +142,20 @@ const Chatbot = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed bottom-20 right-4 sm:right-8 z-50 w-[calc(100%-2rem)] sm:w-96 h-[70vh] sm:h-[34rem] bg-black border border-gray-800 rounded-2xl shadow-2xl flex flex-col text-white font-sans"
+            className="fixed bottom-20 right-4 sm:right-8 z-50 w-[calc(100%-2rem)] sm:w-96 h-[70vh] sm:h-[34rem] bg-white rounded-2xl shadow-2xl flex flex-col font-sans"
             initial={{ opacity: 0, y: 50, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 50, scale: 0.8 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
-            <div className="bg-white text-black p-4 flex justify-between items-center rounded-t-2xl border-b border-gray-300">
-              <h3 className="font-bold text-lg">Service Assistant</h3>
+            <div className="bg-gray-900 text-white p-4 flex justify-between items-center rounded-t-2xl">
+              <h3 className="font-bold text-lg">Yodezeen Assistance</h3>
               <button onClick={() => setIsOpen(false)}>
                 <X size={20} />
               </button>
             </div>
 
-            <div className="flex-grow p-4 overflow-y-auto bg-black">
+            <div className="flex-grow p-4 overflow-y-auto bg-gray-50">
               {messages.map((msg, index) => (
                 <motion.div
                   key={index}
@@ -169,10 +164,10 @@ const Chatbot = () => {
                   animate={{ opacity: 1, y: 0 }}
                 >
                   <div
-                    className={`max-w-xs px-4 py-2 rounded-2xl ${
+                    className={`max-w-xs px-4 py-2 rounded-2xl text-black ${
                       msg.sender === "user"
-                        ? "bg-white text-black rounded-br-none"
-                        : "bg-gray-800 text-white rounded-bl-none"
+                        ? "bg-blue-500 text-white rounded-br-none"
+                        : "bg-gray-200 text-black rounded-bl-none"
                     }`}
                   >
                     {msg.text}
@@ -182,15 +177,15 @@ const Chatbot = () => {
 
               {!isLoading && currentOptions.length > 0 && (
                 <motion.div
-                  className="rounded-xl mt-2 bg-black"
+                  className="rounded-xl mt-4"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                 >
                   {currentOptions.map((option, index) => (
-                    <div key={index} className="border-b border-gray-700 last:border-b-0">
+                    <div key={index} className="border-b border-gray-200 last:border-b-0">
                       <button
                         onClick={() => handleOptionClick(option)}
-                        className="w-full text-left p-3 text-white hover:bg-gray-800 flex items-center gap-3"
+                        className="w-full text-left p-3 text-blue-600 hover:bg-gray-200/50 flex items-center gap-3 transition-colors duration-200"
                       >
                         {option.icon}
                         <span>{option.text}</span>
@@ -204,18 +199,18 @@ const Chatbot = () => {
 
             <form
               onSubmit={handleFormSubmit}
-              className="p-3 border-t border-gray-800 flex items-center bg-black rounded-b-2xl"
+              className="p-3 border-t border-gray-200 flex items-center bg-white rounded-b-2xl"
             >
               <input
                 type="text"
                 value={userInput}
                 onChange={(e) => setUserInput(e.target.value)}
                 placeholder="Write a message..."
-                className="w-full px-3 py-2 border border-gray-700 bg-black text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-white"
+                className="w-full px-3 py-2 border border-gray-300 bg-white text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <button
                 type="submit"
-                className="ml-2 bg-white text-black p-3 rounded-lg hover:bg-gray-200"
+                className="ml-2 bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700"
               >
                 <Send size={20} />
               </button>
@@ -226,7 +221,7 @@ const Chatbot = () => {
 
       <motion.button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-4 right-8 bg-black text-white border border-gray-700 rounded-full p-4 shadow-xl hover:bg-gray-800 z-50"
+        className="fixed bottom-4 right-8 bg-gray-900 text-white rounded-full p-4 shadow-xl hover:bg-black z-50"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
