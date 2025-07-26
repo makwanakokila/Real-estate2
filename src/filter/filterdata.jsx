@@ -347,12 +347,13 @@ const HeroSection = ({ property, onContactClick }) => (
                 </div>
             </motion.div>
             <motion.div variants={itemVariants} className="pt-4">
+                <Link to={"/contact"}>
                 <button
-                    onClick={onContactClick}
+                    
                     className="bg-white text-[#1A1A1A] px-8 py-3 rounded-lg font-bold hover:bg-opacity-90 transform hover:scale-105 transition-transform duration-300"
                 >
-                    Contact Now
-                </button>
+                    Contact Us
+                </button></Link>
             </motion.div>
         </motion.div>
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">

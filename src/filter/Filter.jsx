@@ -583,19 +583,7 @@ export default function RealEstatePage() {
 
   return (
     <div className="min-h-screen bg-gray-100 font-sans text-gray-900">
-      <header className="bg-white shadow-sm sticky top-0 z-30 border-b border-gray-200">
-        <nav className="container mx-auto px-4 lg:px-8 py-4 flex justify-between items-center">
-          <div className="text-2xl font-black text-black tracking-wide">
-            DREAMHOME
-          </div>
-          <button
-            className="lg:hidden bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors"
-            onClick={() => setIsFilterVisible(!isFilterVisible)}
-          >
-            Filters
-          </button>
-        </nav>
-      </header>
+    
       <main className="container mx-auto p-4 lg:p-8">
         <div className="flex flex-col lg:flex-row gap-8">
           <aside className="hidden lg:block lg:w-1/3 xl:w-1/4">
@@ -638,7 +626,7 @@ export default function RealEstatePage() {
             </div>
           )}
 
-          <section className="w-full lg:w-2/3 xl:w-3/4">
+          <section className="w-full lg:w-2/3 xl:w-3/4 mt-16">
             <div className="flex justify-between items-baseline mb-8">
               <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight">
                 Properties in Ahmedabad

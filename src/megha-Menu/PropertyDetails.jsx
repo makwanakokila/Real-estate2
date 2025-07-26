@@ -800,104 +800,104 @@ const ContactFormModal = ({ propertyName, onClose }) => {
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 font-sans" // Added font-sans
-      onClick={onClose}
-    >
-      <motion.div
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        exit={{ y: 50, opacity: 0 }}
-        className="bg-[#1C1C1C] rounded-2xl shadow-2xl p-8 md:p-10 w-full max-w-lg relative text-white" // Changed background and text color
-        onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
-      >
-        <button onClick={onClose} className="absolute top-4 right-4 text-white hover:text-gray-300"> {/* Changed icon color */}
-          <X size={24} />
-        </button>
-        <h3 className="text-2xl md:text-3xl font-bold mb-2 text-center">Don't hesitate to contact us</h3> {/* Updated title and centered */}
-        <p className="text-gray-400 text-center mb-6 text-sm"> {/* Added location text and styled */}
-          Location: Your Project Inquiry City
-        </p>
+  <motion.div
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  exit={{ opacity: 0 }}
+  className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 font-sans"
+  onClick={onClose}
+>
+  <motion.div
+    initial={{ y: -50, opacity: 0 }}
+    animate={{ y: 0, opacity: 1 }}
+    exit={{ y: 50, opacity: 0 }}
+    className="bg-[#1C1C1C] rounded-2xl shadow-2xl p-8 md:p-10 w-full max-w-lg relative text-white max-h-[90vh] overflow-y-auto"
+    onClick={(e) => e.stopPropagation()}
+  >
+    <button onClick={onClose} className="absolute top-4 right-4 text-white hover:text-gray-300">
+      <X size={24} />
+    </button>
 
-        <form className="space-y-4" onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="fullName" className="sr-only">
-              Full Name
-            </label>
-            <input
-              type="text"
-              id="fullName"
-              placeholder="Enter your full name"
-              value={formData.fullName}
-              onChange={handleChange}
-              className="w-full px-4 py-3 bg-transparent border border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-white text-white placeholder-gray-400" // Styled input for transparency with border
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="email" className="sr-only">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              placeholder="Enter your email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full px-4 py-3 bg-transparent border border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-white text-white placeholder-gray-400" // Styled input for transparency with border
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="phone" className="sr-only">
-              Phone
-            </label>
-            <input
-              type="tel"
-              id="phone"
-              placeholder="Enter your phone"
-              value={formData.phone}
-              onChange={handleChange}
-              className="w-full px-4 py-3 bg-transparent border border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-white text-white placeholder-gray-400" // Styled input for transparency with border
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="enquiryType" className="block text-white text-sm font-medium mb-1">
-              Nature of Enquiry
-            </label>
-            <select
-              id="enquiryType"
-              value={formData.enquiryType}
-              onChange={handleChange}
-              className="w-full px-4 py-3 bg-transparent border border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-white text-white appearance-none pr-8" // Styled select for transparency with border
-              required
-            >
-              <option value="" disabled className="text-gray-400">Please select</option>
-              <option value="site_visit" className="text-white">Schedule a Site Visit</option>
-              <option value="price_details" className="text-white">Get Price Details</option>
-              <option value="brochure_request" className="text-white">Request a Brochure</option>
-              <option value="general_inquiry" className="text-white">General Inquiry</option>
-            </select>
-            {/* Custom arrow for select dropdown */}
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white mt-8">
-              <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-              </svg>
-            </div>
-          </div>
-          <button
-            type="submit"
-            className="w-full bg-white text-[#1C1C1C] px-6 py-3 rounded-lg font-bold text-lg hover:bg-gray-200 transition-colors duration-300" // Changed button style
-          >
-            SEND REQUEST
-          </button>
-        </form>
-      </motion.div>
-    </motion.div>
+    <h3 className="text-2xl md:text-3xl font-bold mb-2 text-center">
+      Don't hesitate to contact us
+    </h3>
+    <p className="text-gray-400 text-center mb-6 text-sm">
+      Location: Your Project Inquiry City
+    </p>
+
+    <form className="space-y-4" onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor="fullName" className="sr-only">Full Name</label>
+        <input
+          type="text"
+          id="fullName"
+          placeholder="Enter your full name"
+          value={formData.fullName}
+          onChange={handleChange}
+          className="w-full px-4 py-3 bg-transparent border border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-white text-white placeholder-gray-400"
+          required
+        />
+      </div>
+      <div>
+        <label htmlFor="email" className="sr-only">Email</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-4 py-3 bg-transparent border border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-white text-white placeholder-gray-400"
+          required
+        />
+      </div>
+      <div>
+        <label htmlFor="phone" className="sr-only">Phone</label>
+        <input
+          type="tel"
+          id="phone"
+          placeholder="Enter your phone"
+          value={formData.phone}
+          onChange={handleChange}
+          className="w-full px-4 py-3 bg-transparent border border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-white text-white placeholder-gray-400"
+          required
+        />
+      </div>
+      <div className="relative">
+        <label htmlFor="enquiryType" className="block text-white text-sm font-medium mb-1">
+          Nature of Enquiry
+        </label>
+        <select
+          id="enquiryType"
+          value={formData.enquiryType}
+          onChange={handleChange}
+          className="w-full px-4 py-3 bg-[#1A1A1A] border border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-white text-white appearance-none pr-8"
+          required
+        >
+          <option value="" disabled className="text-gray-400">Please select</option>
+          <option value="site_visit" className="text-white">Schedule a Site Visit</option>
+          <option value="price_details" className="text-white">Get Price Details</option>
+          <option value="brochure_request" className="text-white">Request a Brochure</option>
+          <option value="general_inquiry" className="text-white">General Inquiry</option>
+        </select>
+
+        {/* Custom Arrow */}
+        <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center mt-8 text-white">
+          <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+          </svg>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        className="w-full bg-white text-[#1C1C1C] px-6 py-3 rounded-lg font-bold text-lg hover:bg-gray-200 transition-colors duration-300"
+      >
+        SEND REQUEST
+      </button>
+    </form>
+  </motion.div>
+</motion.div>
+
   )
 }
 

@@ -2,20 +2,23 @@ import React, { useEffect, useState } from 'react';
 
 const Loader = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
-  const [currentStep, setCurrentStep] = useState(0);
-
 
   useEffect(() => {
+    // Reset progress when component mounts
+    setProgress(0);
+    
     const interval = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) {
           clearInterval(interval);
-          setTimeout(() => onComplete(), 400);
+          setTimeout(() => {
+            if (onComplete) onComplete();
+          }, 500);
           return 100;
         }
-        return prev + 0.8;
+        return prev + 1.5;
       });
-    }, 30);
+    }, 20);
 
     return () => clearInterval(interval);
   }, [onComplete]);
@@ -28,28 +31,12 @@ const Loader = ({ onComplete }) => {
   return (
     <div className="fixed inset-0 bg-black flex items-center justify-center z-50 overflow-hidden">
       <div className="text-center relative">
-        {/* Background Grid
-        <div className="absolute inset-0 opacity-5">
-          <svg width="800" height="400" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <defs>
-              <pattern id="grid" width="25" height="25" patternUnits="userSpaceOnUse">
-                <path d="M 25 0 L 0 0 0 25" fill="none" stroke="#ffffff" strokeWidth="0.5"/>
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid)" />
-          </svg>
+        {/* Loading Text */}
+        <div className="mb-4 text-white text-lg font-light">
+          <div className="animate-pulse">Loading Page...</div>
+          <div className="text-sm text-gray-400 mt-2">{Math.round(progress)}% Complete</div>
         </div>
-         <div className="absolute inset-0 opacity-5">
-          <svg width="800" height="400" className="absolute bottom-1/2 right-1/2 transform translate-x-1/2 translate-y-1/2">
-            <defs>
-              <pattern id="grid" width="25" height="25" patternUnits="userSpaceOnUse">
-                <path d="M 25 0 L 0 0 0 25" fill="none" stroke="#ffffff" strokeWidth="0.5"/>
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid)" />
-          </svg>
-        </div> */}
-
+        
         {/* Main Architectural Drawing */}
         <div className="mb-8 relative z-10">
           <svg 
@@ -351,10 +338,9 @@ const Loader = ({ onComplete }) => {
             <line x1="380" y1="230" x2="390" y2="230" stroke="#ffffff" strokeWidth="1" opacity={getLineOpacity(100)} className="transition-opacity duration-200"/>
           </svg>
         </div>
-
       </div>
     </div>
   );
 };
 
-export default Loader;
+export default Loader;
