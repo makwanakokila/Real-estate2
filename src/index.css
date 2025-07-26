@@ -159,3 +159,32 @@ html {
   transform: translate3d(0, 0, 0);
   will-change: transform;
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* In your global CSS file, e.g., src/index.css */
+
+/* Ensure HTML and Body always cover the full viewport */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh; /* Ensure it takes at least full viewport height */
+  background-color: white; /* Set the background color to white */
+  box-sizing: border-box; /* Crucial for width calculations */
+}
+
+/* If you have a root div for React, make sure it also spans full width */
+#root { /* Or whatever your root div ID is */
+  width: 100%;
+  min-height: 100vh;
+  /* If your modal needs to cover the entire screen, ensure #root doesn't clip it. */
+  /* Remove overflow-x-hidden from here if it exists */
+  /* overflow-x: hidden; */
+}
