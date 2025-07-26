@@ -575,7 +575,7 @@ export default function PortfolioGallery() {
       </div> */}
 
       {/* Gallery Header Section */}
-      <section id="gallery-header" className="bg-white py-16 md:py-24 text-center">
+      {/* <section id="gallery-header" className="bg-white py-16 md:py-24 text-center">
         <div className="max-w-4xl mx-auto px-6">
           <h2
             className={`text-3xl md:text-4xl font-bold text-black mb-4 transition-all duration-1000 ${
@@ -594,7 +594,7 @@ export default function PortfolioGallery() {
             glimpse into our world.
           </p>
         </div>
-      </section>
+      </section> */}
 
       {/* Image Grid Section */}
       <ImageGrid />

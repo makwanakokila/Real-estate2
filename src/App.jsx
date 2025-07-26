@@ -189,7 +189,7 @@ function App() {
   const forceLightTheme = [
     "/about",
     "/media",
-    "/",
+  
     "/blog",
     "/loan-calculator",
     "/vr",
