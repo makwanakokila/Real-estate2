@@ -153,7 +153,7 @@ const GetBrochure = () => {
             {/* Download Button */}
             <div className="flex items-center justify-end">
               <button
-                className="w-8 h-8 border border-gray-400 rounded flex items-center justify-center hover:bg-black hover:text-white transition-colors duration-200"
+                className="w-8 h-8 border border-gray-400 rounded flex items-center justify-center bg-black hover:text-white transition-colors duration-200"
                 onClick={(e) => handleDirectDownload(project, e)}
                 title={`Download Brochure for ${project.name}`}
               >

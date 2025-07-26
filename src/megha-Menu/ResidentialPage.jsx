@@ -12,7 +12,6 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-
 const ResidentialPage = () => {
   const allProjects = [
     {
@@ -556,57 +555,64 @@ const ResidentialPage = () => {
             </button>
           </div>
         </div>
+        
+        {/* === UPDATED CARDS GRID === */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-         {filteredProjects.map((proj) => (
-  <div
-    key={proj.id}
-    className="group bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col"
-  >
-    <div className="relative">
-      <img
-        src={proj.image}
-        alt={proj.name}
-        className="w-full h-56 object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-      />
-      <span className="absolute top-3 right-3 text-xs font-medium px-3 py-1 rounded-full shadow-md bg-white text-black">
-        {proj.projectStatus}
-      </span>
-    </div>
-    <div className="p-4 flex flex-col flex-1">
-      <h3 className="text-lg font-bold mb-1">{proj.name}</h3>
-      <p className="text-sm text-gray-500 mb-3"> {proj.location}</p>
-      <div className="flex items-center justify-between mb-4">
-        <p className="text-xs text-gray-400">Built by:</p>
-        <div className="h-6">
-          <img
-            src={proj.builderLogo}
-            alt="Builder Logo"
-            className="h-full object-contain"
-          />
-        </div>
-      </div>
-      <div className="mt-auto border-t border-gray-100 pt-3 flex items-center justify-between text-sm text-gray-700">
-        <div className="flex items-center space-x-2">
-          {/* <span className="text-lg">🏠</span> */}
-          <span className="font-medium">{proj.type}</span>
-        </div>
-        <div className="flex items-center space-x-2">
-          {/* <span className="text-lg">📐</span> */}
-          <span className="font-medium">{proj.area}</span>
-        </div>
-      </div>
+          {filteredProjects.map((proj) => (
+            <div
+              key={proj.id}
+              className="group bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col"
+            >
+              <div className="relative">
+                <img
+                  src={proj.image}
+                  alt={proj.name}
+                  className="w-full h-56 object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                />
+                <span className="absolute top-3 right-3 text-xs font-medium px-3 py-1 rounded-full shadow-md bg-white text-black">
+                  {proj.projectStatus}
+                </span>
+              </div>
+              <div className="p-4 flex flex-col flex-1">
+                <h3 className="text-lg font-bold mb-1">{proj.name}</h3>
+                <p className="text-sm text-gray-500 mb-3"> {proj.location}</p>
+                <div className="flex items-center justify-between mb-4">
+                  <p className="text-xs text-gray-400">Built by:</p>
+                  <div className="h-6">
+                    <img
+                      src={proj.builderLogo}
+                      alt="Builder Logo"
+                      className="h-full object-contain"
+                    />
+                  </div>
+                </div>
 
-      {/* 👇 View Details Link */}
-      <Link
-        to={`/Residential/details/${proj.id}`}
-        className="w-full bg-black text-white px-4 py-2 rounded-lg font-medium hover:bg-gray-800 transition-colors mt-4 block text-center"
-      >
-        View Details
-      </Link>
-    </div>
-  </div>
-))}
+                {/* This div uses mt-auto to push itself and subsequent elements to the bottom */}
+                <div className="mt-auto border-t border-gray-100 pt-3">
+                  <div className="flex items-center justify-between text-sm text-gray-700">
+                    <div className="flex items-center space-x-2">
+                      <span className="font-medium">{proj.type}</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <span className="font-medium">{proj.area}</span>
+                    </div>
+                  </div>
+                  {/* 👇 NEWLY ADDED PRICE ELEMENT */}
+                  <p className="text-2xl font-bold text-green-600 mt-2">
+                    {proj.price} onwards
+                  </p>
+                </div>
 
+                {/* 👇 View Details Link */}
+                <Link
+                  to={`/Residential/details/${proj.id}`}
+                  className="w-full bg-black text-white px-4 py-2 rounded-lg font-medium hover:bg-gray-800 transition-colors mt-4 block text-center"
+                >
+                  View Details
+                </Link>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     </div>
